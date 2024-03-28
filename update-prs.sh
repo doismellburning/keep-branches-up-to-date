@@ -8,7 +8,11 @@ echo "Updating everything with respect to $BASE"
 
 git switch "$BASE"
 
-for BRANCH in $(git branch --list | grep -v '^\*')
+BRANCHES=$(gh pr list --json "headRefName" --jq '.[].headRefName')
+
+echo "Processing $BRANCHES"
+
+for BRANCH in $BRANCHES
 do
 	echo "Processing branch $BRANCH"
 	git switch "$BRANCH"

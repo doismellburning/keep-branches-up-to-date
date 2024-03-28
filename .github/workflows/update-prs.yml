@@ -1,0 +1,19 @@
+---
+name: Update PRs to main
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  update-prs:
+    runs-on: "ubuntu-20.04"
+    steps:
+      -
+        uses: "actions/checkout@v4"
+        with:
+          fetch-depth: "0"  # Fetch alllll the branches
+
+      # TODO Actually do something

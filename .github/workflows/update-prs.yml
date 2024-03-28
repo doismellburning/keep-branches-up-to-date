@@ -7,6 +7,9 @@ on:
     branches:
       - "main"
 
+permissions:
+  contents: "write"
+
 jobs:
   update-prs:
     runs-on: "ubuntu-20.04"
@@ -16,4 +19,6 @@ jobs:
         with:
           fetch-depth: "0"  # Fetch alllll the branches
 
-      # TODO Actually do something
+      - run: "./update-prs.sh"
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -2,6 +2,23 @@
 
 set -e
 
+
+function configure_git {
+
+	if ! git config user.email
+	then
+		git config --local user.email "github-pr-branch-updater@example.invalid"
+	fi
+
+	if ! git config user.name
+	then
+		git config --local user.name "GitHub PR Branch Updater Workflow"
+	fi
+}
+
+
+configure_git
+
 BASE=${1:-main}
 
 echo "Updating everything with respect to $BASE"

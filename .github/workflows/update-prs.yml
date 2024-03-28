@@ -16,4 +16,4 @@ jobs:
         with:
           fetch-depth: "0"  # Fetch alllll the branches
 
-      # TODO Actually do something
+      - run: "./update-prs.sh"
